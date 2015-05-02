@@ -51,7 +51,7 @@ public class BDManagement{
   }
   /**
    * 
-   * @param nombre nombre del jugados
+   * @param nombre nombre del jugador
    * @param apellido apellido del jugador
    * @param username nombre de usuario (debe ser unico)
    */ 
