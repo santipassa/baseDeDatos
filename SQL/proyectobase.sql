@@ -14,7 +14,7 @@ nombre varchar(30) not null,
 
 --TABLA DE PARTIDAS
 CREATE TABLE Partida
-(codigo_partida integer not null primary key, 
+(codigo_partida integer not null primary key auto_increment, 
 dimension_x_tablero integer not null, 
 dimension_y_tablero integer not null,
 fecha_hora_inicio datetime not null, 
