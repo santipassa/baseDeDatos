@@ -10,10 +10,10 @@ fecha_hora_inicio datetime not null,
 fecha_hora_fin datetime not null,
 dni_jugador_1 varchar(8) not null, 
 dni_jugador_2 varchar(8) not null, 
-dni_ganador varchar(8) not null,
-constraint fk1 foreign key (dni_jugador_1) references Usuario(dni) on delete cascade, 
-constraint fk2 foreign key (dni_jugador_2) references Usuario(dni) on delete cascade,
-constraint fk3 foreign key (dni_ganador) references Usuario(dni) on delete cascade);
+dni_ganador varchar(8) ,
+constraint fk1 foreign key (dni_jugador_1) references Usuario(dni) on delete cascade on update cascade, 
+constraint fk2 foreign key (dni_jugador_2) references Usuario(dni) on delete cascade on update cascade,
+constraint fk3 foreign key (dni_ganador) references Usuario(dni) on delete cascade on update cascade) ;
 CREATE TABLE Celda 
 (id_celda integer not null primary key auto_increment,
 fila integer not null,
@@ -23,8 +23,8 @@ CREATE TABLE Tiene
 id_celda integer not null, 
 orden integer not null, 
 constraint pk primary key (codigo_partida,id_celda),
-constraint fkk foreign key (codigo_partida) references Partida(codigo_partida) on delete cascade,
-constraint fkl foreign key (id_celda) references Celda(id_celda) on delete cascade);
+constraint fkk foreign key (codigo_partida) references Partida(codigo_partida) on delete cascade on update cascade,
+constraint fkl foreign key (id_celda) references Celda(id_celda) on delete cascade on update cascade );
 
 CREATE TABLE baja_usuarios(id integer not null primary key auto_increment,
 	 dni varchar(8),
