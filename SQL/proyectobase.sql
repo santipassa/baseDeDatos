@@ -26,3 +26,11 @@ constraint pk primary key (codigo_partida,id_celda),
 constraint fkk foreign key (codigo_partida) references Partida(codigo_partida) on delete cascade,
 constraint fkl foreign key (id_celda) references Celda(id_celda) on delete cascade);
 
+CREATE TABLE baja_usuarios(id integer not null primary key auto_increment,
+	 dni varchar(8),
+	 nombre varchar(30) not null,
+	 apellido varchar(30) not null,
+	 user_db varchar(30) not null,
+	 fecha date not null
+	 );
+
