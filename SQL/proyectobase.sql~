@@ -18,11 +18,3 @@ CREATE TABLE Celda
 (id_celda integer not null primary key auto_increment,
 fila integer not null,
 columna integer not null);
-CREATE TABLE Tiene 
-(codigo_partida integer not null, 
-id_celda integer not null, 
-orden integer not null, 
-constraint pk primary key (codigo_partida,id_celda),
-constraint fkk foreign key (codigo_partida) references Partida(codigo_partida) on delete cascade,
-constraint fkl foreign key (id_celda) references Celda(id_celda) on delete cascade);
-
