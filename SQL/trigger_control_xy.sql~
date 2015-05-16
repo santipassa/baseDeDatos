@@ -1,0 +1,12 @@
+delimiter $$
+CREATE TRIGGER trigger_control_xy
+BEFORE INSERT ON Celda
+FOR EACH ROW
+BEGIN
+	CREATE VIEW join_Celda_Tiene SELECT Tiene.id_celda,fila,columna,codigo_partida,orden FROM Celda,Tiene where NEW.id_celda=Tiene.id_celda;
+	CREATE VIEW join_partida SELECT * FROM Partida NATURAL JOIN join_Celda_Tiene;
+	 
+	
+	
+END;
+$$ delimiter ;
