@@ -38,9 +38,9 @@ public class BDManagement{
    * 
    * @param username nombre de usuario al que se le quieren ver las partidas
    */
-  public void showUserGame(String username){
+  public void showUserGame(String dniUs){
     try{
-      ResultSet rs = st.executeQuery("SELECT * FROM partida where username1="+'"'+username+'"');
+      ResultSet rs = st.executeQuery("SELECT * FROM Usuario where dni="+'"'+dniUs+'"');
       while(rs.next()){
         System.out.println(rs.getString(1)+" | "+rs.getString(2)+" | "+rs.getString(3));
       }
@@ -55,12 +55,12 @@ public class BDManagement{
    * @param apellido apellido del jugador
    * @param username nombre de usuario (debe ser unico)
    */ 
-  public void addUser(String nombre, String apellido,String username){
+  public void addUser(String dniUs, String nombreUs,String apellidoUs){
       try{
-        stm = ct.prepareStatement("INSERT INTO users VALUES(?,?,?)");
-        stm.setString(1,username);
-        stm.setString(2,nombre);
-        stm.setString(3,apellido);
+        stm = ct.prepareStatement("INSERT INTO Usuario (dni,nombre,apellido) VALUES (?,?,?)");
+        stm.setString(1,dniUs);
+        stm.setString(2,nombreUs);
+        stm.setString(3,apellidoUs);
         stm.executeUpdate();
         
       }catch(Exception e){
@@ -72,9 +72,9 @@ public class BDManagement{
    * 
    * @param username nombre de usuario a eliminar
    */
-  public void deleteUser(String username){
+  public void deleteUser(String dniUs){
       try{
-        st.execute("delete from users where username="+'"'+username+'"');
+        st.execute("delete from Usuario where dni="+'"'+dniUs+'"');
       }catch(Exception e){
           System.out.println(e);
       }
