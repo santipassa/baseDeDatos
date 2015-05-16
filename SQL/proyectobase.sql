@@ -31,8 +31,6 @@ CREATE TABLE Celda
 (id_celda integer not null primary key auto_increment,
 fila integer not null,
 columna integer not null);
-<<<<<<< HEAD
-=======
 
 --TABLA DE RELACION TIENE
 CREATE TABLE Tiene 

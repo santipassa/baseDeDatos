@@ -12,10 +12,7 @@ CREATE TABLE Usuario
 nombre varchar(30) not null,
  apellido varchar(30) not null);
 
-<<<<<<< HEAD
-=======
---TABLA DE PARTIDAS
->>>>>>> cc90dcc4fe96850b9493078b953e8ad7cd1b3866
+
 CREATE TABLE Partida
 (codigo_partida integer not null primary key auto_increment, 
 dimension_x_tablero integer not null, 
@@ -57,5 +54,3 @@ CREATE TABLE baja_usuarios
 	 );
 
 
-
->>>>>>> cc90dcc4fe96850b9493078b953e8ad7cd1b3866
