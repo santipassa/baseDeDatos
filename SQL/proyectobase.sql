@@ -1,11 +1,11 @@
---MOTOR DE BASE DE DATOS UTILIZADO: MySQL
+-- MOTOR DE BASE DE DATOS UTILIZADO: MySQL
 
 
 DROP SCHEMA IF EXISTS connect4BD;
 CREATE SCHEMA connect4BD;
 USE connect4BD;
 --
---TABLA DE USUARIOS
+-- TABLA DE USUARIOS
 --
 CREATE TABLE Usuario
  (dni varchar(8) primary key, 
@@ -25,24 +25,25 @@ ganador varchar(8),
 constraint fk_jugador_1 foreign key (dni_jugador_1) references Usuario(dni) on delete cascade on update cascade, 
 constraint fk_jugador_2 foreign key (dni_jugador_2) references Usuario(dni) on delete cascade on update cascade);
 
---TABLA DE CELDAS
+-- TABLA DE CELDAS
 CREATE TABLE Celda 
 (fila integer not null,
 columna integer not null,
 constraint pri primary key(fila,columna));
 
---TABLA DE RELACION TIENE
+-- TABLA DE RELACION TIENE
 drop table if exists Tiene;
 CREATE TABLE Tiene 
 (codigo_partida integer not null, 
 orden integer not null, 
 fila integer not null,
 columna integer not null,
-constraint pp primary key (codigo_partida,fila,columna),
+constraint kprimary primary key (codigo_partida,fila,columna),
 constraint fk_par foreign key (codigo_partida) references Partida(codigo_partida) on delete cascade on update cascade,
-constraint fk_fil foreign key (fila) references Celda(fila) on delete cascade on update cascade);
+constraint fk_fil foreign key (fila) references Celda(fila) on delete cascade on update cascade,
+constraint fk_col foreign key (columna) references Celda(columna) on delete cascade on update cascade);
 
---TABLA DE AUDITORIA DE LA BASE DE DATOS
+-- TABLA DE AUDITORIA DE LA BASE DE DATOS
 CREATE TABLE baja_usuarios
 (id integer not null primary key auto_increment,
 	 dni varchar(8),
