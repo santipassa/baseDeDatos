@@ -21,18 +21,15 @@ fecha_hora_inicio datetime not null,
 fecha_hora_fin datetime not null,
 dni_jugador_1 varchar(8) not null, 
 dni_jugador_2 varchar(8) not null, 
-dni_ganador varchar(8) ,
+ganador varchar(8),
 constraint fk_jugador_1 foreign key (dni_jugador_1) references Usuario(dni) on delete cascade on update cascade, 
-constraint fk_jugador_2 foreign key (dni_jugador_2) references Usuario(dni) on delete cascade on update cascade,
-constraint fk_jugador_ganador foreign key (dni_ganador) references Usuario(dni) on delete cascade on update cascade) ;
+constraint fk_jugador_2 foreign key (dni_jugador_2) references Usuario(dni) on delete cascade on update cascade);
 
 --TABLA DE CELDAS
 CREATE TABLE Celda 
-(id_celda integer not null primary key auto_increment,
-fila integer not null,
-columna integer not null);
-<<<<<<< HEAD
-=======
+(fila integer not null,
+columna integer not null,
+constraint pri primary key(fila,columna));
 
 --TABLA DE RELACION TIENE
 CREATE TABLE Tiene 
