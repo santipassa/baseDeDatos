@@ -1,0 +1,1 @@
+select nombre,apellido,dni,count(ganador) as cantidad_partidas_ganadas from Usuario,Partida where dni=ganador group by dni; 
