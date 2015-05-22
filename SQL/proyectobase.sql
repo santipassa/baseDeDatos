@@ -32,7 +32,6 @@ columna integer not null,
 constraint pri primary key(fila,columna));
 
 -- TABLA DE RELACION TIENE
-drop table if exists Tiene;
 CREATE TABLE Tiene 
 (codigo_partida integer not null, 
 orden integer not null, 
@@ -40,8 +39,7 @@ fila integer not null,
 columna integer not null,
 constraint kprimary primary key (codigo_partida,fila,columna),
 constraint fk_par foreign key (codigo_partida) references Partida(codigo_partida) on delete cascade on update cascade,
-constraint fk_fil foreign key (fila) references Celda(fila) on delete cascade on update cascade,
-constraint fk_col foreign key (columna) references Celda(columna) on delete cascade on update cascade);
+constraint fk_fil foreign key (fila,columna) references Celda(fila,columna) on delete cascade on update cascade);
 
 -- TABLA DE AUDITORIA DE LA BASE DE DATOS
 CREATE TABLE baja_usuarios

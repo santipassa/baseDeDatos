@@ -1,4 +1,6 @@
-INSERT INTO `BaseDeDatos`.`Usuario`(`dni`,`nombre`,`apellido`)
+
+-- Insercion en la base de datos usuario
+INSERT INTO Usuario(dni,nombre,apellido)
 VALUES
 ("20200789","Jose","Ortiz"),
 ("20340398","Martin","Ocampo"),

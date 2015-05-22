@@ -1,13 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package proyectobd.BDManagement;
 
 /**
  *
- * @author santiago
+ * @author Santiago
  */
 import java.sql.*;
 
@@ -15,7 +11,7 @@ import java.sql.*;
 public class BDManagement{
       //Configuracion de la conexion a la base de datos
       private String driver = "org.gjt.mm.mysql.Driver";
-      private String url = "jdbc:mysql://localhost/proyectoBD";
+      private String url = "jdbc:mysql://localhost/connect4BD";
       private String username = "root";
       private String password = "Control123";
       private Connection ct;
@@ -28,7 +24,7 @@ public class BDManagement{
   		Class.forName(driver);
   		ct = DriverManager.getConnection(url,username,password);
                 st = ct.createStatement();
-  		System.out.println("conexion exitosa");
+  		System.out.println("Conexion exitosa");
   	}catch(Exception e){
   		System.out.println("No se pudo conectar a la base de datos");
   	}
@@ -36,16 +32,19 @@ public class BDManagement{
   }
   /**
    * 
-   * @param username nombre de usuario al que se le quieren ver las partidas
+   * @param dniUs DNI del jugador al que se le quieren ver las partidas
    */
   public void showUserGame(String dniUs){
     try{
-      ResultSet rs = st.executeQuery("SELECT * FROM Usuario where dni="+'"'+dniUs+'"');
+      ResultSet rs = st.executeQuery
+      ("SELECT codigo_partida,
+        fecha_hora_inicio,fecha_hora_fin,dni_jugador_1,dni_jugador_2
+         FROM Partida where dni_jugador_1="+'"'+dniUs+'"'+"OR dni_jugador_2="+'"'+dniUs+'"');
       while(rs.next()){
-        System.out.println(rs.getString(1)+" | "+rs.getString(2)+" | "+rs.getString(3));
+        System.out.println(rs.getString(1)+" | "+rs.getString(2)+" | "+rs.getString(3)+" | "+rs.getString(4)+" | "+rs.getString(5));
       }
     }catch(Exception e){
-      System.out.println("Error al realizar la consulta");
+      System.out.println(e+"Error al realizar la consulta");
 
     }
   }
@@ -53,7 +52,7 @@ public class BDManagement{
    * 
    * @param nombre nombre del jugador
    * @param apellido apellido del jugador
-   * @param username nombre de usuario (debe ser unico)
+   * @param dniUs  es el DNI del jugador (debe ser unico)
    */ 
   public void addUser(String dniUs, String nombreUs,String apellidoUs){
       try{
@@ -70,13 +69,13 @@ public class BDManagement{
   }
   /**
    * 
-   * @param username nombre de usuario a eliminar
+   * @param dniUs DNI del usuario a eliminar
    */
   public void deleteUser(String dniUs){
       try{
         st.execute("delete from Usuario where dni="+'"'+dniUs+'"');
       }catch(Exception e){
-          System.out.println(e);
+          System.out.println(e+"Ocurrio un error al querer eliminar el usuario");
       }
   
   }
