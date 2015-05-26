@@ -15,8 +15,8 @@ nombre varchar(30) not null,
 
 CREATE TABLE Partida
 (codigo_partida integer not null primary key auto_increment, 
-dimension_x_tablero integer not null, 
-dimension_y_tablero integer not null,
+maxFilas integer not null, 
+maxColumnas integer not null,
 fecha_hora_inicio datetime not null, 
 fecha_hora_fin datetime not null,
 dni_jugador_1 varchar(8) not null, 
