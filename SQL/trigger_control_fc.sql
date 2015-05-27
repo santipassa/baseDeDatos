@@ -1,5 +1,5 @@
 delimiter $$
-CREATE TRIGGER trigger_control_xy
+CREATE TRIGGER trigger_control_fc
 BEFORE INSERT ON Tiene
 FOR EACH ROW
 BEGIN
