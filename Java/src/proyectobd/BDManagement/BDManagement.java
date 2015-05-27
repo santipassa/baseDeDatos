@@ -37,9 +37,8 @@ public class BDManagement{
   public void showUserGame(String dniUs){
     try{
       ResultSet rs = st.executeQuery
-      ("SELECT codigo_partida,
-        fecha_hora_inicio,fecha_hora_fin,dni_jugador_1,dni_jugador_2
-         FROM Partida where dni_jugador_1="+'"'+dniUs+'"'+"OR dni_jugador_2="+'"'+dniUs+'"');
+      ("SELECT codigo_partida,fecha_hora_inicio,fecha_hora_fin,dni_jugador_1,dni_jugador_2 FROM Partida WHERE dni_jugador_1="+'"'+dniUs+'"'+" OR dni_jugador_2="+'"'+dniUs+'"');
+     System.out.println("");
       while(rs.next()){
         System.out.println(rs.getString(1)+" | "+rs.getString(2)+" | "+rs.getString(3)+" | "+rs.getString(4)+" | "+rs.getString(5));
       }
