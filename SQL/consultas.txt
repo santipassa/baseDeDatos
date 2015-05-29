@@ -1,1 +1,5 @@
 select nombre,apellido,dni,count(ganador) as cantidad_partidas_ganadas from Usuario,Partida where dni=ganador group by dni; 
+select * from ((select dni_jugador_1 as dni_jugador,codigo_partida,max(fecha_hora_fin-fecha_hora_inicio) as tiempo_de_partida from Partida group by dni_jugador_1 )
+union  
+(select dni_jugador_2,codigo_partida,max(fecha_hora_fin-fecha_hora_inicio) as tiempo_de_partida from Partida group by dni_jugador_2)) Unido
+join Usuario where dni=dni_jugador order by tiempo_de_partida desc;
