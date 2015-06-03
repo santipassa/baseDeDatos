@@ -6,7 +6,7 @@ import proyectobd.BDManagement.BDManagement;
  * @author santiago
  */
 public class ProyectoBD {
-
+   
     public static void insertar(BDManagement bdm){
         Scanner scan = new Scanner(System.in);
         String dni;
